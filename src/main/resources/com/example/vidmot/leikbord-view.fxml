@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.example.vidmot.BoltiC?>
+<?import com.example.vidmot.PallurC?>
+<?import javafx.scene.layout.Pane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BoltiC fx:id="fxBolti" layoutX="14.0" layoutY="14.0" />
+      <PallurC fx:id="fxPallur" layoutX="286.0" layoutY="292.0" />
+      <PallurC fx:id="fxPallur1" layoutX="452.0" layoutY="713.0" />
+      <PallurC fx:id="fxPallur2" layoutX="64.0" layoutY="647.0" />
+      <PallurC fx:id="fxPallur3" layoutX="340.0" layoutY="580.0" />
+      <PallurC fx:id="fxPallur4" layoutX="153.0" layoutY="387.0" />
+      <PallurC fx:id="fxPallur5" layoutX="54.0" layoutY="200.0" />
+      <PallurC fx:id="fxPallur6" fitWidth="146.0" layoutX="445.0" layoutY="207.0" />
+   </children>
+</fx:root>

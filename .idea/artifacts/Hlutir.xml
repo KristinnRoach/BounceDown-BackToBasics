@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Hlutir">
+    <output-path>$PROJECT_DIR$/out/artifacts/Hlutir</output-path>
+    <root id="archive" name="Hlutir.jar">
+      <element id="module-output" name="BounceBall" />
+    </root>
+  </artifact>
+</component>

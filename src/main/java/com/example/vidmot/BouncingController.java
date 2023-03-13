@@ -89,7 +89,7 @@ public class BouncingController {
     public void startGame() {
         KeyFrame k = new KeyFrame(Duration.millis(30),    // hvert tímabil er 50 millisek.
                 e -> {
-                    // fxLeikbord.afram();
+                    fxLeikbord.afram();
                     leikurinn.haekkaStigin();
                     if (fxLeikbord.boltiABotni()) {
                         leikLokid("ónóóó");
@@ -112,10 +112,23 @@ public class BouncingController {
         fxTester.setText(s);
         //animation.paint(0, 0, 0);
     }
-}
+
+    private void onActionKeys(KeyEvent event) {
+        try {
+            if (stefnaMap.get(event.getCode()) == null) {
+                event.consume();
+            } else {
+                fxLeikbord.getFxBolti().setStefna(stefnaMap.get(event.getCode()).getGradur());
+                fxLeikbord.getFxBolti().afram();
+            }
+        } catch (NullPointerException e) {
+            event.consume();
+        }
+    }
 
 
-  /*  public void orvatakkar() {
+
+    public void orvatakkar() {
 
         // setjum upp beina aðganginn frá örvatökkunum og í hornið
         stefnaMap.put(KeyCode.RIGHT, Stefna.HAEGRI);
@@ -128,22 +141,11 @@ public class BouncingController {
                 event -> {      // lambda fall - event er parameter
                     // flettum upp horninu fyrir KeyCode í map
                     onActionKeys(event);
-                });
-    }  */
+                });}
+}
 
 
-  /* private void onActionKeys(KeyEvent event) {
-       try {
-            if (stefnaMap.get(event.getCode()) == null) {
-                event.consume();
-            } else {
-                fxLeikbord.getFxBolti().setStefna(stefnaMap.get(event.getCode()).getGradur());
-                fxLeikbord.getFxBolti().afram();
-        }
-        } catch (NullPointerException e) {
-            event.consume();
-        }
-    } */
+
 
 
    /* public void testBolti() {

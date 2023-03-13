@@ -21,10 +21,10 @@ public class BouncingApplication extends Application {
         stage.setMaximized(true);
         stage.setMaxHeight(800);
         stage.setMaxWidth(600);
-        scene.setOnKeyPressed(event -> {
-            bc.getFxLeikbord().getFxBolti().afram(event);
-        });
-        //bc.orvatakkar();
+       // scene.setOnKeyPressed(event -> {
+     //       bc.getFxLeikbord().getFxBolti().afram(event);
+      //  });
+        bc.orvatakkar();
         bc.startGame();
         stage.setScene(scene);
         stage.show();

@@ -20,7 +20,7 @@ public class PallurC extends ImageView implements LeikHluturInterface {
         }
     }
 
-    public void aframPallar() {
+    public void afram() {
         // leikbord = (LeikbordC) this.getParent();
         // LeikbordC leikbord = bc.getFxLeikbord();
         leikbord = (LeikbordC) getParent();

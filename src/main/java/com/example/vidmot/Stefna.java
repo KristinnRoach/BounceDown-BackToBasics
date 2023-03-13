@@ -9,6 +9,4 @@ public enum Stefna {
     Stefna(int gradur) {
         this.gradur = gradur;
     }
-
-
 }

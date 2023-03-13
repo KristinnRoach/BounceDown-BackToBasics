@@ -37,17 +37,17 @@ public class LeikbordC extends Pane implements LeikHluturInterface {
         fxPallar.add(fxPallur6);
     }
 
-    @Override
+   /* @Override
     public void afram() {
         for (PallurC p : fxPallar) {
             p.afram();
             athugaBoltiAPalli(p);
         }
         if (!boltiABotni() && fxBolti.getOnIt()==null){
-            fxBolti.setRotate(Stefna.NIDUR.getGradur());
+            // fxBolti.setRotate(Stefna.NIDUR.getGradur());
             fxBolti.afram();
         }
-    }
+    } */
 
     public boolean boltiABotni() {
         if (fxBolti.getLayoutY() >= getHeight() - fxBolti.getFitHeight()) {

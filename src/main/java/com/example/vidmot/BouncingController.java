@@ -29,6 +29,11 @@ public class BouncingController {
     protected BorderPane fxRoot;
     @FXML
     private Label fxStig;
+
+    public BorderPane getFxRoot() {
+        return fxRoot;
+    }
+
     @FXML
     private Label fxTester;
     @FXML
@@ -70,16 +75,21 @@ public class BouncingController {
         this.fxStig.textProperty().bind(leikurinn.stiginProperty().asString());
         fxTester.setText("GAME ON");
     }
+
     @FXML
     protected void sfxJump() {
-       audio.sfxAudioJump();
+        audio.sfxAudioJump();
     }
+
     @FXML
-    protected void muteAudio() { audio.getMp().setMute(true); }
+    protected void muteAudio() {
+        audio.getMp().setMute(true);
+    }
+
     public void startGame() {
         KeyFrame k = new KeyFrame(Duration.millis(30),    // hvert tímabil er 50 millisek.
                 e -> {
-                    fxLeikbord.afram();
+                    // fxLeikbord.afram();
                     leikurinn.haekkaStigin();
                     if (fxLeikbord.boltiABotni()) {
                         leikLokid("ónóóó");
@@ -91,15 +101,21 @@ public class BouncingController {
         audio.sfxPlayAudio();
     }
 
+   /* private void keyEvents(KeyEvent event) {
+        fxStig.getScene().setOnKeyPressed(KeyEvent -> {
+            fxLeikbord.getFxBolti().afram(event);
+    });} */
+
 
     private void leikLokid(String s) {
         gameTime.stop();
         fxTester.setText(s);
         //animation.paint(0, 0, 0);
     }
+}
 
 
-    public void orvatakkar() {
+  /*  public void orvatakkar() {
 
         // setjum upp beina aðganginn frá örvatökkunum og í hornið
         stefnaMap.put(KeyCode.RIGHT, Stefna.HAEGRI);
@@ -113,10 +129,10 @@ public class BouncingController {
                     // flettum upp horninu fyrir KeyCode í map
                     onActionKeys(event);
                 });
-    }
+    }  */
 
 
-   private void onActionKeys(KeyEvent event) {
+  /* private void onActionKeys(KeyEvent event) {
        try {
             if (stefnaMap.get(event.getCode()) == null) {
                 event.consume();
@@ -127,8 +143,7 @@ public class BouncingController {
         } catch (NullPointerException e) {
             event.consume();
         }
-    }
-
+    } */
 
 
    /* public void testBolti() {
@@ -137,4 +152,3 @@ public class BouncingController {
             fxLeikbord.getFxBolti().afram();
         }
     } */
-}

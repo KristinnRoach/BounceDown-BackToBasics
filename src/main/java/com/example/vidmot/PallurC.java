@@ -19,8 +19,8 @@ public class PallurC extends ImageView implements LeikHluturInterface {
             System.out.println("lesaFxml error í pallur");
         }
     }
-    @Override
-    public void afram() {
+
+    public void aframPallar() {
         // leikbord = (LeikbordC) this.getParent();
         // LeikbordC leikbord = bc.getFxLeikbord();
         leikbord = (LeikbordC) getParent();

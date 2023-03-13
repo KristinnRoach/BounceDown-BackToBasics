@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-
+// g jasdpvjaæfdsjaklæ
 public class BoltiC extends ImageView implements LeikHluturInterface {
 
     @FXML

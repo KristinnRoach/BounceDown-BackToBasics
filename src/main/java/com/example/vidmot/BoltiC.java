@@ -3,10 +3,9 @@ package com.example.vidmot;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
+// g jasdpvjaæfdsjaklæ
 public class BoltiC extends ImageView implements LeikHluturInterface {
 
     @FXML
@@ -15,7 +14,9 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
     private BouncingController bc;
     private Audio audio = new Audio();
     private LeikbordC leikbord;
-
+    // private final double OFFSET = 1;
+    private double velocityY = 0;
+    private boolean isJumping = false;
     public PallurC getOnIt() {
         return onIt;
     }
@@ -25,36 +26,20 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
     }
 
     public void setStefna(int gradur) {
-        setRotate(gradur);
+        fxBolti.setRotate(gradur);
     }
 
     public BoltiC() {
         FXML_Lestur.lesa(this, "bolti-view.fxml");
     }
 
-
-    public void afram(KeyEvent event) {
-        switch (event.getCode()) {
-            case UP -> setTranslateY(getTranslateY() - 10);
-            case DOWN -> setTranslateY(getTranslateY() + 10);
-            case LEFT -> setTranslateX(getTranslateX() - 10);
-            case RIGHT -> setTranslateX(getTranslateX() + 10);
-            default -> { setTranslateY(getTranslateY() + 10);
-            }
-        }
-        }
-    }
-
-
-
-
-   /*
-
-   @Override
+    @Override
     public void afram() {
         if (getRotate() == Stefna.HAEGRI.getGradur()) {
             setLayoutX(getLayoutX() + 15);
         } else if (getRotate() == Stefna.VINSTRI.getGradur()) {
+            //setTranslateZ(fxBolti.getBoundsInLocal().getWidth() / 2.0);
+            //setRotationAxis(Rotate.Y_AXIS);
             setLayoutX(getLayoutX() - 15);
         } else if (getRotate() == Stefna.NIDUR.getGradur()) {
             setLayoutY(getLayoutY() + 10);
@@ -66,11 +51,9 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
             jumpTime.play();
             audio.sfxAudioJump();
 
-
-
        // } ballAtBorder();
-
-    public void ballAtBorder(){
+    }
+    /*   public void ballAtBorder(){
         // LeikbordC leikbord = (LeikbordC) this.getParent();
         if (fxBolti.getLayoutX() >= leikbord.getWidth() - getFitWidth()) {
             fxBolti.setLayoutX(0);
@@ -79,19 +62,21 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
         if (fxBolti.getLayoutX() <= leikbord.getWidth() - getFitWidth()) {
                 fxBolti.setLayoutX(0);
         }
+    } */
+ }}
 
 
-    @Override
+   /* @Override
     public void afram() {
         LeikbordC parent = (LeikbordC) this.getParent();
         setX((int) (getX() < 0 || getX() > parent.getWidth() ? 0 : getX() + Math.cos(Math.toRadians
                 (stefna.getGradur())) * hradi) % (parent.getWidth() - getImage().getWidth()));
         setY((int) (getY() - Math.sin(Math.toRadians(stefna.getGradur()) * hradi) % parent.getHeight()));
-    }
+    } */
 
 
 
-
+/*
 @Override
 public void afram() {
     TranslateTransition tr = new TranslateTransition();

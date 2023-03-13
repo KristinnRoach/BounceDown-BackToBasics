@@ -3,9 +3,9 @@ package com.example.vidmot;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
-// g jasdpvjaæfdsjaklæ
 public class BoltiC extends ImageView implements LeikHluturInterface {
 
     @FXML
@@ -26,7 +26,7 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
     }
 
     public void setStefna(int gradur) {
-        fxBolti.setRotate(gradur);
+        setRotate(gradur);
     }
 
     public BoltiC() {
@@ -38,8 +38,6 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
         if (getRotate() == Stefna.HAEGRI.getGradur()) {
             setLayoutX(getLayoutX() + 15);
         } else if (getRotate() == Stefna.VINSTRI.getGradur()) {
-            //setTranslateZ(fxBolti.getBoundsInLocal().getWidth() / 2.0);
-            //setRotationAxis(Rotate.Y_AXIS);
             setLayoutX(getLayoutX() - 15);
         } else if (getRotate() == Stefna.NIDUR.getGradur()) {
             setLayoutY(getLayoutY() + 10);

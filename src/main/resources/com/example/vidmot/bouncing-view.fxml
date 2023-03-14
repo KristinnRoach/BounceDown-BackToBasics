@@ -15,7 +15,7 @@
             <Font size="20.0" />
          </font>
          <graphic>
-            <Button fx:id="fxMute" alignment="CENTER" mnemonicParsing="false" onAction="#muteAudio" prefHeight="30.0" prefWidth="107.0" text="Mute" />
+            <Button fx:id="fxMute" alignment="CENTER" mnemonicParsing="false" onAction="#muteAudio" prefHeight="30.0" prefWidth="107.0" text="Sound ON" />
          </graphic>
       </Label>
    </top>

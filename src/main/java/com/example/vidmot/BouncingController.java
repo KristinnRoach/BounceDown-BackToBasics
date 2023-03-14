@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class BouncingController {
+    @FXML
+    private Button fxMute;
     private Leikur leikurinn;
 
     public Timeline getGameTime() {
@@ -40,8 +42,8 @@ public class BouncingController {
     private LeikbordC fxLeikbord;
     @FXML
     public MediaView mediaView;
-    @FXML
-    public Button fxAudioTest;
+    /*@FXML
+    public Button fxAudioTest;*/
     private Audio audio = new Audio();
 
     /*public BouncingController() throws IOException {
@@ -73,6 +75,7 @@ public class BouncingController {
     private void initialize() {
         leikurinn = new Leikur();
         this.fxStig.textProperty().bind(leikurinn.stiginProperty().asString());
+        setFocus();
         fxTester.setText("GAME ON");
     }
 
@@ -83,7 +86,21 @@ public class BouncingController {
 
     @FXML
     protected void muteAudio() {
-        audio.getMp().setMute(true);
+        if(audio.getMp().isMute()) {
+            audio.getMp().setMute(false);
+            fxMute.setText("Sound ON");
+        }
+        else {
+            audio.getMp().setMute(true);
+            fxMute.setText("Sound OFF");
+        }
+    }
+    private void setFocus(){
+        fxStig.setFocusTraversable(false);    // kannski þarf ekki
+        // fxAudioTest.setFocusTraversable(false);    // kannski þarf ekki
+        fxTester.setFocusTraversable(false);    // kannski þarf ekki
+        fxMute.setFocusTraversable(false);    // kannski þarf ekki
+        fxLeikbord.getFxBolti().setFocusTraversable(true);    // kannski þarf ekki
     }
 
     public void startGame() {

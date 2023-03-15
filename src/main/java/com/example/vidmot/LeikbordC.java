@@ -4,23 +4,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 public class LeikbordC extends Pane implements LeikHluturInterface {
     // private BouncingController bc;
-    private Audio audio = new Audio();
+    // private Audio audio = new Audio();
     @FXML
     private BoltiC fxBolti;
     public BoltiC getFxBolti() {
         return fxBolti;
     }
     @FXML
-    protected PallurC fxPallur, fxPallur1, fxPallur2, fxPallur3, fxPallur4, fxPallur5, fxPallur6;
+    private PallurC fxPallur, fxPallur1, fxPallur2, fxPallur3, fxPallur4, fxPallur5, fxPallur6;
 
     public ObservableList<PallurC> getFxPallar() {
         return fxPallar;
     }
 
-    ObservableList<PallurC> fxPallar= FXCollections.observableArrayList();
+    private ObservableList<PallurC> fxPallar= FXCollections.observableArrayList();
 
     public LeikbordC() {
         try {

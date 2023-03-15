@@ -16,7 +16,7 @@ public class BouncingApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(BouncingApplication.class.getResource("bouncing-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         scene.getStylesheets().add(getClass().getResource("CSS/bouncingball.css").toExternalForm());
-        // scene.getRoot().requestFocus(); // gerir þetta eitthvað?
+        scene.getRoot().requestFocus(); // gerir þetta eitthvað?
         bc = fxmlLoader.getController();
         stage.setTitle("Bouncedown!");
         stage.setMaximized(true);

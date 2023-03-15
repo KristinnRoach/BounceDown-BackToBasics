@@ -3,38 +3,38 @@ package com.example.vidmot;
 import com.example.vinnsla.Leikur;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class BouncingController {
     @FXML
     private Button fxMute;
     private Leikur leikurinn;
-
     public Timeline getGameTime() {
         return gameTime;
     }
-
     private Timeline gameTime;
     //private Animation animation = new Animation();
     @FXML
     protected BorderPane fxRoot;
     @FXML
     private Label fxStig;
-
     public BorderPane getFxRoot() {
         return fxRoot;
     }
-
     @FXML
     private Label fxHeader;
     @FXML
@@ -45,12 +45,7 @@ public class BouncingController {
     public Button fxAudioTest;*/
     private Audio audio = new Audio();
 
-    /*public BouncingController() throws IOException {
-    } */
-
-
     // public MediaView getMediaView() { return mediaView; }
-
 
     public LeikbordC getFxLeikbord() {
         return fxLeikbord;
@@ -58,16 +53,17 @@ public class BouncingController {
 
     private final HashMap<KeyCode, Stefna> stefnaMap = new HashMap<KeyCode, Stefna>();
 
+    public HashMap<KeyCode, Boolean> getPressedKeys() { return pressedKeys; }
+
+    public void setPressedKeys(HashMap<KeyCode, Boolean> pressedKeys) { this.pressedKeys = pressedKeys; }
+
+    private HashMap<KeyCode, Boolean> pressedKeys = new HashMap<>();
+
+
 
     // Skoða FRACTAL animation!! Setja inn ef hægt ok takk bæ
     // ( gæti komið bara þegar mar deyr eðeikkað einfalt
 
-/*         Bindings.createDoubleBinding(()  -> {    // til að binda y gildið á boltanum við pallinn (breyta úr clock dæminu)
-            Date date = control.timePoperty().get();   // þegar boltinn snertir setja binding á og taka af þegar snertir ekki
-            return date == null ? "" : FORMAT.format(date);
-        }, control.timeProp));
-
- */
 
 
     @FXML
@@ -76,6 +72,13 @@ public class BouncingController {
         this.fxStig.textProperty().bind(leikurinn.stiginProperty().asString());
         setFocus();
         fxHeader.setText("GAME ON");
+        // allToFront();
+    }
+
+    private void allToFront(){
+        fxHeader.toFront();
+        fxMute.toFront();
+        fxStig.toFront();
     }
 
     @FXML
@@ -84,7 +87,8 @@ public class BouncingController {
     }
 
     @FXML
-    protected void muteAudio() {
+    protected void muteAudio(ActionEvent event) {
+        event.consume();
         if(audio.getMp().isMute()) {
             audio.getMp().setMute(false);
             fxMute.setText("Sound ON");
@@ -94,16 +98,16 @@ public class BouncingController {
            fxMute.setText("Sound OFF");
         }
     }
-    private void setFocus(){
-        fxStig.setFocusTraversable(false);    // kannski þarf ekki
-        fxHeader.setFocusTraversable(false);    // kannski þarf ekki
-        fxMute.setFocusTraversable(false);    // kannski þarf ekki
-        fxLeikbord.getFxBolti().setFocusTraversable(true);    // kannski þarf ekki
+
+    private void setFocus(){  // kannski þarf ekki
+        // fxStig.setFocusTraversable(false);
+        // fxHeader.setFocusTraversable(false);
+        // fxMute.setFocusTraversable(false);
+        fxLeikbord.getFxBolti().setFocusTraversable(true);
     }
 
     public void startGame() {
-       // applyStyle();
-        KeyFrame k = new KeyFrame(Duration.millis(30),    // hvert tímabil er 50 millisek.
+        KeyFrame k = new KeyFrame(Duration.millis(80),    // hvert tímabil er 50 millisek.
                 e -> {
                     fxLeikbord.afram();
                     leikurinn.haekkaStigin();
@@ -115,11 +119,14 @@ public class BouncingController {
         gameTime.setCycleCount(Timeline.INDEFINITE);   // hve lengi tímalínan keyrist
         gameTime.play();
         audio.sfxPlayAudio();
+        Scene s = fxStig.getScene();
+        s.addEventFilter(KeyEvent.ANY,      //KeyEvents eru sendar á Scene
+                event -> {      // lambda fall - event er parameter
+                    // flettum upp horninu fyrir KeyCode í map
+                    onActionKeys(event);
+                });
     }
 
- /*   private void applyStyle(){
-        fxMute.getStyleClass().add("mute");
-    } */
 
    /* private void keyEvents(KeyEvent event) {
         fxStig.getScene().setOnKeyPressed(KeyEvent -> {

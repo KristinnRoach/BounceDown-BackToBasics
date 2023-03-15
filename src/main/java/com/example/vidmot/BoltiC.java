@@ -3,6 +3,7 @@ package com.example.vidmot;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 
 public class BoltiC extends ImageView implements LeikHluturInterface {
@@ -10,7 +11,11 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
     private PallurC onIt = null;
     private BouncingController bc;
     private Audio audio = new Audio();
-    private LeikbordC leikbord;
+
+    private Timeline jumpTime;
+
+
+    // private LeikbordC leikbord;
     // private final double OFFSET = 1;
     // private double velocityY = 0;
     // private boolean isJumping = false;
@@ -30,6 +35,14 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
         FXML_Lestur.lesa(this, "bolti-view.fxml");
     }
 
+    private void createTimeline(){
+        KeyFrame jumpFrame1 = new KeyFrame(Duration.ZERO, new KeyValue(layoutYProperty(), getLayoutY()));
+        KeyFrame jumpFrame2 = new KeyFrame(Duration.millis(100), new KeyValue(layoutYProperty(), getLayoutY() - 50));
+        this.jumpTime = new Timeline(jumpFrame1, jumpFrame2);
+        jumpTime.setCycleCount(1);
+        jumpTime.play();
+    }
+
     @Override
     public void afram() {
         if (getRotate() == Stefna.HAEGRI.getGradur()) {
@@ -39,28 +52,30 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
             //setRotationAxis(Rotate.Y_AXIS);
             setLayoutX(getLayoutX() - 15);
         } else if (getRotate() == Stefna.NIDUR.getGradur()) {
-            setLayoutY(getLayoutY() + 10);
+            setLayoutY(getLayoutY() + 20);
         } else if (getRotate() == Stefna.UPP.getGradur()) {
-            KeyFrame jumpFrame1 = new KeyFrame(Duration.ZERO, new KeyValue(layoutYProperty(), getLayoutY()));
-            KeyFrame jumpFrame2 = new KeyFrame(Duration.millis(300), new KeyValue(layoutYProperty(), getLayoutY() - 50));
-            Timeline jumpTime = new Timeline(jumpFrame1, jumpFrame2);
-            jumpTime.setCycleCount(1);
-            jumpTime.play();
+            createTimeline();
             audio.sfxAudioJump();
-
-       // } ballAtBorder();
+        }
+        ballAtBorder();
     }
-    /*   public void ballAtBorder(){
-        // LeikbordC leikbord = (LeikbordC) this.getParent();
-        if (fxBolti.getLayoutX() >= leikbord.getWidth() - getFitWidth()) {
-            fxBolti.setLayoutX(0);
-            audio.sfxAudioJump();
+
+    /*    public void afram() {
+            if (bc.getPressedKeys().get(KeyCode.UP)) { setTranslateY(-25); }
+            else if (bc.getPressedKeys().get(KeyCode.DOWN)) { setTranslateY(10); }
+            else if (bc.getPressedKeys().get(KeyCode.RIGHT)) { setTranslateX(10); }
+            else if (bc.getPressedKeys().get(KeyCode.LEFT)) { setTranslateX(-10); }
+        } */
+    public void ballAtBorder() {
+        if (getLayoutX() > 600) {
+            setLayoutX(0);
+        } else if (getLayoutX() < 0) {
+            setLayoutX(600);
         }
-        if (fxBolti.getLayoutX() <= leikbord.getWidth() - getFitWidth()) {
-                fxBolti.setLayoutX(0);
-        }
-    } */
- }}
+        // if (getLayoutY() > 0) { setLayoutY(0); }
+    }
+}
+
 
 
    /* @Override

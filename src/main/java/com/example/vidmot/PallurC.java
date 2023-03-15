@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 
 public class PallurC extends ImageView implements LeikHluturInterface {
 
-    // private BouncingController bc;
+    private BouncingController bc;
     private LeikbordC leikbord;
 
     @FXML
@@ -21,9 +21,7 @@ public class PallurC extends ImageView implements LeikHluturInterface {
     }
 
     public void afram() {
-        // leikbord = (LeikbordC) this.getParent();
         // LeikbordC leikbord = bc.getFxLeikbord();
-        leikbord = (LeikbordC) getParent();
         leikbord = (LeikbordC) this.getParent();
         ObservableList<PallurC> pList= leikbord.getFxPallar();
         for (PallurC p : pList ) {
@@ -33,7 +31,7 @@ public class PallurC extends ImageView implements LeikHluturInterface {
                 p.setLayoutY(b + leikbord.getHeight());
                 p.setLayoutX(a);
         }
-        p.setLayoutY(p.getLayoutY()-0.1);
+        p.setLayoutY(p.getLayoutY()-0.3);
     }
     }
 }

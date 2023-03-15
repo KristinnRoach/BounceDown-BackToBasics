@@ -2,6 +2,7 @@ package com.example.vidmot;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -33,6 +34,7 @@ public class Audio {
             Media media = new Media(uri.toString());
             mp = new MediaPlayer(media);
             getBC().mediaView.setMediaPlayer(mp);
+            mp.setVolume(7);
             mp.play();
         } catch (Exception e) {
             e.printStackTrace();

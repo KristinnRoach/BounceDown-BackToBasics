@@ -13,7 +13,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 public class BouncingController {
@@ -37,7 +36,7 @@ public class BouncingController {
     }
 
     @FXML
-    private Label fxTester;
+    private Label fxHeader;
     @FXML
     private LeikbordC fxLeikbord;
     @FXML
@@ -76,7 +75,7 @@ public class BouncingController {
         leikurinn = new Leikur();
         this.fxStig.textProperty().bind(leikurinn.stiginProperty().asString());
         setFocus();
-        fxTester.setText("GAME ON");
+        fxHeader.setText("GAME ON");
     }
 
     @FXML
@@ -92,18 +91,18 @@ public class BouncingController {
         }
         else {
             audio.getMp().setMute(true);
-            fxMute.setText("Sound OFF");
+           fxMute.setText("Sound OFF");
         }
     }
     private void setFocus(){
         fxStig.setFocusTraversable(false);    // kannski þarf ekki
-        // fxAudioTest.setFocusTraversable(false);    // kannski þarf ekki
-        fxTester.setFocusTraversable(false);    // kannski þarf ekki
+        fxHeader.setFocusTraversable(false);    // kannski þarf ekki
         fxMute.setFocusTraversable(false);    // kannski þarf ekki
         fxLeikbord.getFxBolti().setFocusTraversable(true);    // kannski þarf ekki
     }
 
     public void startGame() {
+       // applyStyle();
         KeyFrame k = new KeyFrame(Duration.millis(30),    // hvert tímabil er 50 millisek.
                 e -> {
                     fxLeikbord.afram();
@@ -118,6 +117,10 @@ public class BouncingController {
         audio.sfxPlayAudio();
     }
 
+ /*   private void applyStyle(){
+        fxMute.getStyleClass().add("mute");
+    } */
+
    /* private void keyEvents(KeyEvent event) {
         fxStig.getScene().setOnKeyPressed(KeyEvent -> {
             fxLeikbord.getFxBolti().afram(event);
@@ -126,7 +129,7 @@ public class BouncingController {
 
     private void leikLokid(String s) {
         gameTime.stop();
-        fxTester.setText(s);
+        fxHeader.setText(s);
         //animation.paint(0, 0, 0);
     }
 

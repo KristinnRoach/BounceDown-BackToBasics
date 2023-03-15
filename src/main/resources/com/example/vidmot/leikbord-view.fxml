@@ -6,7 +6,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BoltiC fx:id="fxBolti" layoutX="14.0" layoutY="14.0" />
+      <BoltiC fx:id="fxBolti" layoutX="236.0" />
       <PallurC fx:id="fxPallur" layoutX="286.0" layoutY="292.0" />
       <PallurC fx:id="fxPallur1" layoutX="452.0" layoutY="713.0" />
       <PallurC fx:id="fxPallur2" layoutX="64.0" layoutY="647.0" />

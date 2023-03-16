@@ -55,6 +55,7 @@ public class Audio {
             int randInt = rand.nextInt(6);
             MediaPlayer jump = new MediaPlayer(media[randInt]);
             getBC().mediaView.setMediaPlayer(jump);
+            jump.setVolume(0.5);
             jump.play();
         } catch (Exception e) {
             e.printStackTrace();

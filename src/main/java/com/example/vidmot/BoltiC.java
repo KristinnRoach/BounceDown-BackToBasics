@@ -35,11 +35,9 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
         FXML_Lestur.lesa(this, "bolti-view.fxml");
     }
 
-    private void createTimeline(){
-        KeyFrame jumpFrame1 = new KeyFrame(Duration.ZERO, new KeyValue(layoutYProperty(), getLayoutY()));
-        KeyFrame jumpFrame2 = new KeyFrame(Duration.millis(100), new KeyValue(layoutYProperty(), getLayoutY() - 50));
-        this.jumpTime = new Timeline(jumpFrame1, jumpFrame2);
-        jumpTime.setCycleCount(1);
+    private void createTimeline(KeyFrame kf1, KeyFrame kf2, int cycles){
+        this.jumpTime = new Timeline(kf1, kf2);
+        jumpTime.setCycleCount(cycles);
         jumpTime.play();
     }
 
@@ -54,7 +52,9 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
         } else if (getRotate() == Stefna.NIDUR.getGradur()) {
             setLayoutY(getLayoutY() + 20);
         } else if (getRotate() == Stefna.UPP.getGradur()) {
-            createTimeline();
+            KeyFrame jumpFrame1 = new KeyFrame(Duration.ZERO, new KeyValue(layoutYProperty(), getLayoutY()));
+            KeyFrame jumpFrame2 = new KeyFrame(Duration.millis(100), new KeyValue(layoutYProperty(), getLayoutY() - 50));
+            createTimeline(jumpFrame1, jumpFrame2, 1);
             audio.sfxAudioJump();
         }
         ballAtBorder();

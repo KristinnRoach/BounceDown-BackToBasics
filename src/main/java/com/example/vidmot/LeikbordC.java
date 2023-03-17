@@ -1,5 +1,6 @@
 package com.example.vidmot;
 
+import com.example.vinnsla.Leikur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,15 +12,10 @@ public class LeikbordC extends Pane implements LeikHluturInterface {
     // private Audio audio = new Audio();
     @FXML
     private BoltiC fxBolti;
+    private Leikur leikur;
     public BoltiC getFxBolti() {
         return fxBolti;
     }
-
-    public double getSpeed() { return speed; }
-
-    public void setSpeed(double speed) { this.speed = speed; }
-
-    private double speed = 1;
     @FXML
     private PallurC fxSpeedyPallur, fxPallur1, fxPallur2, fxPallur3, fxPallur4, fxPallur5, fxPallur6;
 
@@ -62,12 +58,6 @@ public class LeikbordC extends Pane implements LeikHluturInterface {
         }
         return false;
     }
-   /* public boolean boltiUtAf() {
-        if (fxBolti.getLayoutX() >= getWidth() - fxBolti.getFitWidth()
-            || fxBolti.getLayoutX() <= getWidth() - fxBolti.getFitWidth()){
-            return true;
-        } return false;
-    } */
 
     public void setjaBoltaAPall (PallurC p){
         fxBolti.setOnIt(p);

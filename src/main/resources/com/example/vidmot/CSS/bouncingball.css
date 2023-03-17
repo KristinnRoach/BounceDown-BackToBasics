@@ -27,23 +27,6 @@
     -fx-background-color: green;
 }
 
-/*
-
--fx-background-image: url("../myndir/bubbles.png");
--fx-background-repeat: repeat-y;
--fx-animation: move-background 10s linear infinite;
-
-@keyframes move-background {
-    0% {
-        -fx-background-position: 0 0;
-    }
-    100% {
-        -fx-background-position: 0 200px;
-    }
-} */
-
-/* Mute Button */
-
 
 #fxMute {
     -fx-font-family: "Lucida Console";
@@ -53,7 +36,3 @@
     -fx-text-fill: black;
 }
 
-/*#fxMute:selected {
-    -fx-text-fill: black;
-    -fx-background-color: red;
-} */

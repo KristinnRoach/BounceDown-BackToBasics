@@ -5,8 +5,6 @@ public enum Stefna {
 
     public int getGradur() { return gradur;}
     private int gradur;
-    private boolean pressed = false;
-
     Stefna(int gradur) {
         this.gradur = gradur;
     }

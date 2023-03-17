@@ -6,6 +6,7 @@ Seinna ef þú ætlar að láta hraðann vera mismunandi getur verið gott að h
 Í BouncingController skaltu binda stigaviðmótshlutinn við stigin í Leikur
  */
 
+import com.example.vidmot.BouncingController;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
@@ -21,8 +22,9 @@ public class Leikur {
     public void setStiginProperty(int stig) {
         this.stigin.set(stig);
     }
-
     public void haekkaStigin() {
         setStiginProperty(stiginInt()+1);
     }
 }
+
+

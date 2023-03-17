@@ -5,13 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
 public class PallurC extends ImageView implements LeikHluturInterface {
-
-    private BouncingController bc;
     private LeikbordC leikbord;
-
-    @FXML
-    private PallurC fxPallur;
-
     public PallurC() {
         try {
             FXML_Lestur.lesa(this, "pallur-view.fxml");
@@ -21,7 +15,6 @@ public class PallurC extends ImageView implements LeikHluturInterface {
     }
 
     public void afram() {
-        // LeikbordC leikbord = bc.getFxLeikbord();
         leikbord = (LeikbordC) this.getParent();
         ObservableList<PallurC> pList= leikbord.getFxPallar();
         for (PallurC p : pList ) {
@@ -31,15 +24,10 @@ public class PallurC extends ImageView implements LeikHluturInterface {
                 p.setLayoutY(b + leikbord.getHeight());
                 p.setLayoutX(a);
         }
-            if (!(p == pList.get(6))) { p.setLayoutY((p.getLayoutY()-0.4) * leikbord.getSpeed()); }
-            else { p.setLayoutY((p.getLayoutY()-1.4) * leikbord.getSpeed()); }
+            if (!(p == pList.get(6))) { p.setLayoutY((p.getLayoutY()-0.9)); }
+            else { p.setLayoutY((p.getLayoutY()-1.6)); }
     }
     }
-  /*  public void speedyPallur() {
-
-    }
-          */
-
 }
 
 

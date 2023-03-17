@@ -1,4 +1,7 @@
 
+#AnchorPaneTop{
+    -fx-background-color: #FFF176;
+}
 
 #fxHeader{
     -fx-font-family: "Lucida Console";
@@ -8,13 +11,16 @@
     -fx-text-alignment: center;
 }
 
+#AnchorPaneBottom{
+    -fx-background-color: #FFF176;
+}
+
 
 #fxStig {
     -fx-font-family: "Lucida Console";
     -fx-text-fill: black;
     -fx-background-color: #FFF176;
     -fx-font-size: 30;
-    -fx-text-alignment: center;
 }
 
 #fxLeikbord {
@@ -40,6 +46,7 @@
 
 
 #fxMute {
+    -fx-font-family: "Lucida Console";
     -fx-font-size: 10;
     -fx-max-width: 150;
     -fx-max-height: 100;

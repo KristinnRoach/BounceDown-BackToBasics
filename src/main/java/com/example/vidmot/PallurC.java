@@ -31,8 +31,8 @@ public class PallurC extends ImageView implements LeikHluturInterface {
                 p.setLayoutY(b + leikbord.getHeight());
                 p.setLayoutX(a);
         }
-            if (!(p == pList.get(6))) { p.setLayoutY(p.getLayoutY()-0.4); }
-            else { p.setLayoutY(p.getLayoutY()-1.4); }
+            if (!(p == pList.get(6))) { p.setLayoutY((p.getLayoutY()-0.4) * leikbord.getSpeed()); }
+            else { p.setLayoutY((p.getLayoutY()-1.4) * leikbord.getSpeed()); }
     }
     }
   /*  public void speedyPallur() {

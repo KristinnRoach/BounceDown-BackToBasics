@@ -16,11 +16,8 @@ import java.net.URI;
 import java.util.Random;
 
 public class Audio {
-    // public MediaView mediaView;
     private Parent root;
-
     public MediaPlayer getMp() { return mp; }
-
     private MediaPlayer mp;
     public Audio() {
     }
@@ -37,7 +34,7 @@ public class Audio {
             URI uri = new File(path).toURI();
             Media media = new Media(uri.toString());
             mp = new MediaPlayer(media);
-            getBC().mediaView.setMediaPlayer(mp);
+            getBC().getMediaView().setMediaPlayer(mp);
             mp.setVolume(7);
             mp.setCycleCount(MediaPlayer.INDEFINITE);
             mp.play();
@@ -59,7 +56,7 @@ public class Audio {
             Random rand = new Random();
             int randInt = rand.nextInt(6);
             MediaPlayer jump = new MediaPlayer(media[randInt]);
-            getBC().mediaView.setMediaPlayer(jump);
+            getBC().getMediaView().setMediaPlayer(jump);
             jump.setVolume(0.25);
             jump.play();
         } catch (Exception e) {
@@ -68,26 +65,11 @@ public class Audio {
     }
     public void sfxGameOver(){
         Duration current = mp.getCurrentTime();
-        Duration loop = current.add(Duration.seconds(1.0));
+        Duration loop = current.add(Duration.seconds(0.5));
         mp.setStartTime(current);
         mp.setStopTime(loop);
         mp.setCycleCount(50);
         mp.play();
         mp.setRate(0.5);
-        /*Timeline tapestop = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(mp.rateProperty(), 1)),
-                new KeyFrame(Duration.seconds(5), new KeyValue(mp.rateProperty(), 0.0))
-        );
-
-        tapestop.play();*/
     }
-    }
-
-/*   Media[] media = new Media[6];
-        for(int i = 0; i < 6; i++) {
-        String jumpFile = "com.example.vidmot/Audio/jump" + (i + 1) + ".aif";
-        media[i] = new Media(jumpFile);
-        }
-        Random rand = new Random();
-        int randInt = rand.nextInt(6);
-*/
+}

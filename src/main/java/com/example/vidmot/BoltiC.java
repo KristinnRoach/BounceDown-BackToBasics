@@ -2,6 +2,8 @@ package com.example.vidmot;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.scene.effect.PerspectiveTransform;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.transform.Rotate;
@@ -47,14 +49,16 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
         if (getRotate() == Stefna.HAEGRI.getGradur()) {
             setLayoutX(getLayoutX() + 15);
         } else if (getRotate() == Stefna.VINSTRI.getGradur()) {
-           // setRotationAxis(Rotate.Y_AXIS);
             setLayoutX(getLayoutX() - 15);
+           // TranslateTransition pivot = new TranslateTransition(Duration.millis(20), this);
+           // pivot.setInterpolator();
+
         } else if (getRotate() == Stefna.NIDUR.getGradur()) {
             setLayoutY(getLayoutY() + 20);
         } else if (getRotate() == Stefna.UPP.getGradur()) {
             KeyFrame jumpFrame1 = new KeyFrame(Duration.ZERO, new KeyValue(layoutYProperty(), getLayoutY()));
-            KeyFrame jumpFrame2 = new KeyFrame(Duration.millis(100), new KeyValue(layoutYProperty(), getLayoutY() - 50));
-            createTimeline(jumpFrame1, jumpFrame2, 1);
+            KeyFrame jumpFrame2 = new KeyFrame(Duration.millis(10), new KeyValue(layoutYProperty(), getLayoutY() - 50));createTimeline(jumpFrame1, jumpFrame2, 1);
+           // setTranslateY(getTranslateY() - 30);
             audio.sfxAudioJump();
         }
         ballAtBorder();

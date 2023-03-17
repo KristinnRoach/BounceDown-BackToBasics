@@ -16,8 +16,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
 
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class BouncingController {
     @FXML
@@ -40,12 +43,11 @@ public class BouncingController {
     @FXML
     private LeikbordC fxLeikbord;
     @FXML
-    public MediaView mediaView;
-    /*@FXML
-    public Button fxAudioTest;*/
+    private MediaView mediaView;
     private Audio audio = new Audio();
+    public BouncingController thisBC() { return this; }
 
-    // public MediaView getMediaView() { return mediaView; }
+    public MediaView getMediaView() { return mediaView; }
 
     public LeikbordC getFxLeikbord() {
         return fxLeikbord;
@@ -55,7 +57,16 @@ public class BouncingController {
 
     public HashMap<KeyCode, Boolean> getPressedKeys() { return pressedKeys; }
 
-    public void setPressedKeys(HashMap<KeyCode, Boolean> pressedKeys) { this.pressedKeys = pressedKeys; }
+    public void setPressedKeys(KeyEvent event) {
+        switch (event.getCode()) {
+            case UP -> pressedKeys.put(KeyCode.UP, true);
+            case DOWN -> pressedKeys.put(KeyCode.DOWN, true);
+            case LEFT -> pressedKeys.put(KeyCode.LEFT, true);
+            case RIGHT -> pressedKeys.put(KeyCode.RIGHT, true);
+            default -> {
+            }
+        }
+    }
 
     private HashMap<KeyCode, Boolean> pressedKeys = new HashMap<>();
 
@@ -112,15 +123,19 @@ public class BouncingController {
         gameTime = new Timeline(k);           // tengjum timeline og tímabilið
         gameTime.setCycleCount(Timeline.INDEFINITE);   // hve lengi tímalínan keyrist
         gameTime.play();
+       // increaseSpeed();
         audio.sfxPlayAudio();
-        Scene s = fxStig.getScene();
-        s.addEventFilter(KeyEvent.ANY,      //KeyEvents eru sendar á Scene
-                event -> {      // lambda fall - event er parameter
-                    // flettum upp horninu fyrir KeyCode í map
-                    onActionKeys(event);
-                });
     }
 
+  /*  private void increaseSpeed() {
+        long startMillis = System.currentTimeMillis();
+        Timer timer = new Timer();
+        if(timer.equals())
+        double newSpeed = fxLeikbord.getSpeed();
+
+        fxLeikbord.setSpeed(newSpeed);
+        });
+    }*/
 
    /* private void keyEvents(KeyEvent event) {
         fxStig.getScene().setOnKeyPressed(KeyEvent -> {
@@ -151,6 +166,7 @@ public class BouncingController {
             if (stefnaMap.get(event.getCode()) == null) {
                 event.consume();
             } else {
+                setPressedKeys(event);
                 fxLeikbord.getFxBolti().setStefna(stefnaMap.get(event.getCode()).getGradur());
                 fxLeikbord.getFxBolti().afram();
             }
@@ -166,12 +182,14 @@ public class BouncingController {
         stefnaMap.put(KeyCode.RIGHT, Stefna.HAEGRI);
         stefnaMap.put(KeyCode.LEFT, Stefna.VINSTRI);
         stefnaMap.put(KeyCode.UP, Stefna.UPP);
-
+        pressedKeys.put(KeyCode.RIGHT, false);
+        pressedKeys.put(KeyCode.LEFT, false);
+        pressedKeys.put(KeyCode.UP, false);
+        pressedKeys.put(KeyCode.DOWN, false);
 
         Scene s = fxStig.getScene();
-        s.addEventFilter(KeyEvent.ANY,      //KeyEvents eru sendar á Scene
-                event -> {      // lambda fall - event er parameter
-                    // flettum upp horninu fyrir KeyCode í map
-                    onActionKeys(event);
-                });}
+        s.addEventFilter(KeyEvent.ANY,
+                event -> { onActionKeys(event);}
+        );
+    }
 }

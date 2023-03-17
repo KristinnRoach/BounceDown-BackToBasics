@@ -14,6 +14,12 @@ public class LeikbordC extends Pane implements LeikHluturInterface {
     public BoltiC getFxBolti() {
         return fxBolti;
     }
+
+    public double getSpeed() { return speed; }
+
+    public void setSpeed(double speed) { this.speed = speed; }
+
+    private double speed = 1;
     @FXML
     private PallurC fxSpeedyPallur, fxPallur1, fxPallur2, fxPallur3, fxPallur4, fxPallur5, fxPallur6;
 

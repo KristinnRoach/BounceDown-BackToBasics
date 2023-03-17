@@ -1,10 +1,14 @@
 package com.example.vidmot;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +39,7 @@ public class Audio {
             mp = new MediaPlayer(media);
             getBC().mediaView.setMediaPlayer(mp);
             mp.setVolume(7);
+            mp.setCycleCount(MediaPlayer.INDEFINITE);
             mp.play();
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,13 +60,28 @@ public class Audio {
             int randInt = rand.nextInt(6);
             MediaPlayer jump = new MediaPlayer(media[randInt]);
             getBC().mediaView.setMediaPlayer(jump);
-            jump.setVolume(0.5);
+            jump.setVolume(0.25);
             jump.play();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-}
+    public void sfxGameOver(){
+        Duration current = mp.getCurrentTime();
+        Duration loop = current.add(Duration.seconds(1.0));
+        mp.setStartTime(current);
+        mp.setStopTime(loop);
+        mp.setCycleCount(50);
+        mp.play();
+        mp.setRate(0.5);
+        /*Timeline tapestop = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(mp.rateProperty(), 1)),
+                new KeyFrame(Duration.seconds(5), new KeyValue(mp.rateProperty(), 0.0))
+        );
+
+        tapestop.play();*/
+    }
+    }
 
 /*   Media[] media = new Media[6];
         for(int i = 0; i < 6; i++) {

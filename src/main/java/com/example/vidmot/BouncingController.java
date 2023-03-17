@@ -1,8 +1,8 @@
 package com.example.vidmot;
 
 import com.example.vinnsla.Leikur;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
+import javafx.animation.Animation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -58,12 +58,6 @@ public class BouncingController {
     public void setPressedKeys(HashMap<KeyCode, Boolean> pressedKeys) { this.pressedKeys = pressedKeys; }
 
     private HashMap<KeyCode, Boolean> pressedKeys = new HashMap<>();
-
-
-
-    // Skoða FRACTAL animation!! Setja inn ef hægt ok takk bæ
-    // ( gæti komið bara þegar mar deyr eðeikkað einfalt
-
 
 
     @FXML
@@ -136,8 +130,20 @@ public class BouncingController {
 
     private void leikLokid(String s) {
         gameTime.stop();
+       /* int dwn = 1;
+        while (dwn>0) {
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+            audio.getMp().setRate(audio.getMp().getRate() -0.1);
+        }*/
         fxHeader.setText(s);
+        //audio.getMp().setRate(0.5);
+
         //animation.paint(0, 0, 0);
+        audio.sfxGameOver();
     }
 
     private void onActionKeys(KeyEvent event) {
@@ -157,7 +163,6 @@ public class BouncingController {
 
     public void orvatakkar() {
 
-        // setjum upp beina aðganginn frá örvatökkunum og í hornið
         stefnaMap.put(KeyCode.RIGHT, Stefna.HAEGRI);
         stefnaMap.put(KeyCode.LEFT, Stefna.VINSTRI);
         stefnaMap.put(KeyCode.UP, Stefna.UPP);
@@ -170,14 +175,3 @@ public class BouncingController {
                     onActionKeys(event);
                 });}
 }
-
-
-
-
-
-   /* public void testBolti() {
-        fxLeikbord.getFxBolti().setRotate(Stefna.NIDUR.gradur);
-        for (int i = 0; i < 50; i++) {
-            fxLeikbord.getFxBolti().afram();
-        }
-    } */

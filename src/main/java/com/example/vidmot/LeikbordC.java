@@ -15,7 +15,7 @@ public class LeikbordC extends Pane implements LeikHluturInterface {
         return fxBolti;
     }
     @FXML
-    private PallurC fxPallur, fxPallur1, fxPallur2, fxPallur3, fxPallur4, fxPallur5, fxPallur6;
+    private PallurC fxSpeedyPallur, fxPallur1, fxPallur2, fxPallur3, fxPallur4, fxPallur5, fxPallur6;
 
     public ObservableList<PallurC> getFxPallar() {
         return fxPallar;
@@ -29,13 +29,13 @@ public class LeikbordC extends Pane implements LeikHluturInterface {
         } catch (Exception e) {
             System.out.println("lesaFxml error í leikbord");
         }
-        fxPallar.add(fxPallur);
         fxPallar.add(fxPallur1);
         fxPallar.add(fxPallur2);
         fxPallar.add(fxPallur3);
         fxPallar.add(fxPallur4);
         fxPallar.add(fxPallur5);
         fxPallar.add(fxPallur6);
+        fxPallar.add(fxSpeedyPallur);
     }
 
     @Override

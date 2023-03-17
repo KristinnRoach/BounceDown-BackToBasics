@@ -4,6 +4,7 @@ import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 public class BoltiC extends ImageView implements LeikHluturInterface {
@@ -46,8 +47,7 @@ public class BoltiC extends ImageView implements LeikHluturInterface {
         if (getRotate() == Stefna.HAEGRI.getGradur()) {
             setLayoutX(getLayoutX() + 15);
         } else if (getRotate() == Stefna.VINSTRI.getGradur()) {
-            //setTranslateZ(fxBolti.getBoundsInLocal().getWidth() / 2.0);
-            //setRotationAxis(Rotate.Y_AXIS);
+           // setRotationAxis(Rotate.Y_AXIS);
             setLayoutX(getLayoutX() - 15);
         } else if (getRotate() == Stefna.NIDUR.getGradur()) {
             setLayoutY(getLayoutY() + 20);
